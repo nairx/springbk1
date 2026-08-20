@@ -1,5 +1,7 @@
 package com.example.springbk1.controller;
 
+import com.example.springbk1.dto.UserRequestDTO;
+import com.example.springbk1.dto.UserResponseDTO;
 import com.example.springbk1.entity.User;
 import com.example.springbk1.service.UserService;
 
@@ -13,14 +15,18 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    UserController(UserService userService) {
-        this.userService = userService;
-    }
+    
 
+    // create user before dto
     @PostMapping
     public User createUser(@RequestBody User user){
         return userService.createUser(user);
     }
+
+    // @PostMapping
+    // public UserResponseDTO createUser(@RequestBody UserRequestDTO userRequestDTO){
+    //     return userService.createUser(userRequestDTO);
+    // }
 
 }
 

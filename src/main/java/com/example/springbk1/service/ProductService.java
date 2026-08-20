@@ -1,5 +1,7 @@
 package com.example.springbk1.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,9 @@ public class ProductService {
     public Product createProduct(Product product){
         return productRepository.save(product);
     }
+
+    public List<Product> getAllProducts() {
+	return productRepository.findAll();
+}
     
 }

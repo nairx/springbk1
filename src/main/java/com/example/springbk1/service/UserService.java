@@ -5,6 +5,8 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.springbk1.dto.UserRequestDTO;
+import com.example.springbk1.dto.UserResponseDTO;
 import com.example.springbk1.entity.User;
 import com.example.springbk1.repository.UserRepository;
 
@@ -14,9 +16,32 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
+   /// Before DTO 
+
     public User createUser(User user){
         return userRepository.save(user);
     }
+
+    /////
+    
+    // public UserResponseDTO createUser(UserRequestDTO dto){
+    //     User user = new User();
+    //     user.setName(dto.getName());
+    //     user.setEmail(dto.getEmail());
+    //     user.setPassword(dto.getPassword());
+    //     user.setRole("user");
+    //     User savedUser = userRepository.save(user);
+    //     UserResponseDTO response = new UserResponseDTO();
+    //     response.setId(savedUser.getId());
+    //     response.setName(savedUser.getName());
+    //     response.setEmail(savedUser.getEmail());
+    //     response.setRole(savedUser.getRole());
+    //     return response;
+    // }
+    
+
+
 
     public List<User> getAllUsers(){
         return userRepository.findAll();
