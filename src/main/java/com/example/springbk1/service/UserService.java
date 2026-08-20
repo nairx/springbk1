@@ -19,26 +19,26 @@ public class UserService {
 
    /// Before DTO 
 
-    public User createUser(User user){
-        return userRepository.save(user);
-    }
+    // public User createUser(User user){
+    //     return userRepository.save(user);
+    // }
 
     /////
     
-    // public UserResponseDTO createUser(UserRequestDTO dto){
-    //     User user = new User();
-    //     user.setName(dto.getName());
-    //     user.setEmail(dto.getEmail());
-    //     user.setPassword(dto.getPassword());
-    //     user.setRole("user");
-    //     User savedUser = userRepository.save(user);
-    //     UserResponseDTO response = new UserResponseDTO();
-    //     response.setId(savedUser.getId());
-    //     response.setName(savedUser.getName());
-    //     response.setEmail(savedUser.getEmail());
-    //     response.setRole(savedUser.getRole());
-    //     return response;
-    // }
+    public UserResponseDTO createUser(UserRequestDTO dto){
+        User user = new User();
+        user.setName(dto.getName());
+        user.setEmail(dto.getEmail());
+        user.setPassword(dto.getPassword());
+        user.setRole("user");
+        User savedUser = userRepository.save(user);
+        UserResponseDTO response = new UserResponseDTO();
+        response.setId(savedUser.getId());
+        response.setName(savedUser.getName());
+        response.setEmail(savedUser.getEmail());
+        response.setRole(savedUser.getRole());
+        return response;
+    }
     
 
 

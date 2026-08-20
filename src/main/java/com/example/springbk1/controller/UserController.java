@@ -18,15 +18,15 @@ public class UserController {
     
 
     // create user before dto
-    @PostMapping
-    public User createUser(@RequestBody User user){
-        return userService.createUser(user);
-    }
-
     // @PostMapping
-    // public UserResponseDTO createUser(@RequestBody UserRequestDTO userRequestDTO){
-    //     return userService.createUser(userRequestDTO);
+    // public User createUser(@RequestBody User user){
+    //     return userService.createUser(user);
     // }
+
+    @PostMapping
+    public UserResponseDTO createUser(@RequestBody UserRequestDTO userRequestDTO){
+        return userService.createUser(userRequestDTO);
+    }
 
 }
 
