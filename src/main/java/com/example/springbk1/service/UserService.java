@@ -12,20 +12,19 @@ import com.example.springbk1.repository.UserRepository;
 
 @Service
 public class UserService {
-    
+
     @Autowired
     private UserRepository userRepository;
 
-
-   /// Before DTO 
+    /// Before DTO
 
     // public User createUser(User user){
-    //     return userRepository.save(user);
+    // return userRepository.save(user);
     // }
 
     /////
-    
-    public UserResponseDTO createUser(UserRequestDTO dto){
+
+    public UserResponseDTO createUser(UserRequestDTO dto) {
         User user = new User();
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
@@ -39,21 +38,26 @@ public class UserService {
         response.setRole(savedUser.getRole());
         return response;
     }
-    
 
-
-
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id){
+    public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User updateUser(Long id, User user){
+    public User getUserByEmailAndPassword(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password);
+    }
+
+    public User registerUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public User updateUser(Long id, User user) {
         Optional<User> existingUser = userRepository.findById(id);
-        if (existingUser.isPresent()){
+        if (existingUser.isPresent()) {
             User userToUpdate = existingUser.get();
             userToUpdate.setName(user.getName());
             userToUpdate.setEmail(user.getEmail());
@@ -64,9 +68,8 @@ public class UserService {
         return null;
     }
 
-    public void deleteUser(Long id){
+    public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
-
 
 }
