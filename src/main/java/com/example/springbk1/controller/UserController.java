@@ -27,7 +27,11 @@ public class UserController {
     @GetMapping
     public List<User> getUsers() {
         return userService.getAllUsers();
+    }
 
+    @GetMapping("/edit/{id}")
+    public User getUserById(@PathVariable Long id) {
+        return userService.getUserById(id);
     }
 
     @PostMapping
@@ -51,6 +55,12 @@ public class UserController {
     public String deleteUser(@PathVariable Long id) {
         userService.deleteById(id);
         return "User Deleted";
+    }
+
+    @PutMapping("/edit/{id}")
+    public String UpdateUser(@PathVariable Long id, @RequestBody User user) {
+        userService.updateUser(id, user);
+        return "User Updated";
     }
 }
 
