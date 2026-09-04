@@ -14,12 +14,16 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public Product createProduct(Product product){
+    public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 
     public List<Product> getAllProducts() {
-	return productRepository.findAll();
-}
-    
+        return productRepository.findAll();
+    }
+
+    public void deleteById(Long id){
+        productRepository.deleteById(id);
+    }
+
 }
