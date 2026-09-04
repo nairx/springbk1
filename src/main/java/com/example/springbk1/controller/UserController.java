@@ -47,6 +47,11 @@ public class UserController {
         return userService.registerUser(user);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteById(id);
+        return "User Deleted";
+    }
 }
 
 // sample json
